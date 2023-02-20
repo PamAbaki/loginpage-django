@@ -1,0 +1,38 @@
+
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Login{% endblock %}
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Login Page</title>
+  
+</head>
+
+<body>
+  {% block content %}
+
+  <link rel="stylesheet" href="{% static 'main.css' %}">
+  <div class="container py-5">
+
+    <form class="box"  method="post">
+      {% csrf_token %}
+
+      <h1>Login</h1>
+    
+      <input type="text" name="" placeholder="Username">
+    
+      <input type="password" name="" placeholder="Password">
+    
+      <input type="submit" name="" value="Login">
+      
+    </form>
+    
+  </div>
+
+  {% endblock %}
+</body>
+
+</html>
+
