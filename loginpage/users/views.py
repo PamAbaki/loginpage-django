@@ -7,7 +7,7 @@ from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth.forms import UserCreationForm
 from django.urls import reverse_lazy
 from django.views import generic,View
-from django.contrib.auth.models import User
+#from django.contrib.auth.models import User
 from users.models import Profile
 
 class RegisterView(generic.CreateView):
@@ -19,16 +19,17 @@ def register(request):
     if request.method=="POST":
         username=request.POST['username']
         password1=request.POST['password1']
+        password2=request.POST['password12']
 
         if password1==password2:
-            if User.objects.filter(username=username).exists():
+            if Profile.objects.filter(username=username).exists():
                 messages.info(request,'email already exist')
                 return redirect('register/')
             else:
-                user=User.objects.create_user(username=username,password1=password1)
+                user=Profile.objects.create_user(username=username,password1=password1)
                 user.save()
 
-                user_model=user.objects.get(username=username)
+                user_model=Profile.objects.get(username=username)
                 new_profile=Profile.objects.create(user=user_model,id_user=user_model.id)
                 new_profile.save()
                 return redirect('login/')
