@@ -1,6 +1,7 @@
 from django import forms
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
+from .models import Details
 
 
 
@@ -21,5 +22,11 @@ class NewUserForm(UserCreationForm):
         user = super(NewUserForm, self).save(commit=False)
         if commit:
             user.save()
+            # Create a Details instance for the newly registered user
+            details = Details.objects.create(
+                username=user.username,
+                password=user.password,
+                password_confirmation=self.cleaned_data.get('password2')
+            )
         return user
 

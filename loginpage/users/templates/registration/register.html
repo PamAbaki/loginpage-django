@@ -6,12 +6,13 @@
 
 {% block content %}
 <link rel="stylesheet" href="{% static 'signup.css' %}">
-
-  <h2>Sign up</h2>
+<div class="container py-5">
   <form method="post">
+    <h2>Sign up</h2>
     {% csrf_token %}
     {{ form.as_p }}
     <button type="submit">Sign Up</button>
   </form>
+</div>
 {% endblock %}
 

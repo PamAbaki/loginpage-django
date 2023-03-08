@@ -79,11 +79,11 @@ WSGI_APPLICATION = 'loginpage.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'logindb', 
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'login_user', 
         'USER': 'postgres',
         'PASSWORD': 'postgres@password',
-        'HOST': '127.0.0.1', 
+        'HOST': 'localhost', 
         'PORT': '5432',
     }
 }

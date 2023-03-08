@@ -1,5 +1,8 @@
 from django.db import models
-from django.contrib.auth import get_user_model
 # Create your models here.
-#User=get_user_model()
 
+
+class Details(models.Model):
+    username = models.CharField(max_length=80, unique=True)
+    password = models.CharField(max_length=128)
+    password_confirmation = models.CharField(max_length=128)
